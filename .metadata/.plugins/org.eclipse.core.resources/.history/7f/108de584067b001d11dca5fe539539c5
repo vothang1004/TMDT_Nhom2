@@ -1,0 +1,21 @@
+package tmdt.model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "demos")
+public class Demo {
+	@Id
+	private String id;
+	private String title;
+	private String description;
+	public Demo() {
+		super();
+	}
+	public Demo(String title, String description) {
+		super();
+		this.title = title;
+		this.description = description;
+	}
+	
+}

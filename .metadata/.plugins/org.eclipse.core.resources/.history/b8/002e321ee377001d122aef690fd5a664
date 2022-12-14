@@ -1,0 +1,5 @@
+package tmdt.repository;
+
+public interface DemoRepository {
+
+}

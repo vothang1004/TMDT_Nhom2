@@ -1,4 +1,5 @@
-import HomePage from "~/pages/web/HomePage";
+import HomePageAdmin from "~/pages/admin/home/HomePageAdmin";
+import HomePage from "~/pages/web/home/HomePage";
 import LoginPage from "~/pages/web/LoginPage";
 import RegisterPage from "~/pages/web/RegisterPage";
 
@@ -17,5 +18,12 @@ export const webRoutes = [
         id: 3,
         path: '/register',
         page: <RegisterPage />
+    },
+]
+export const adminRoutes = [
+    {
+        id: 1,
+        path: '/admin',
+        page: <HomePageAdmin />
     },
 ]

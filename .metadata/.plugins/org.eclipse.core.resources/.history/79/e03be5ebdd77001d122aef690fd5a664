@@ -1,0 +1,5 @@
+package tmdt.repository;
+
+public class BillRepository {
+
+}
