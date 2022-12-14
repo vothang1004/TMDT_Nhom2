@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { webRoutes } from './routes';
+import { adminRoutes, webRoutes } from './routes';
 
 function App() {
   return (
@@ -9,6 +8,11 @@ function App() {
     <Routes>
       {
         webRoutes.map(route => (
+          <Route key={route.id} element={route.page} path={route.path}></Route>
+        ))
+      }
+      {
+        adminRoutes.map(route => (
           <Route key={route.id} element={route.page} path={route.path}></Route>
         ))
       }

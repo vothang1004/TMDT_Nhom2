@@ -1,0 +1,7 @@
+server.port=
+
+spring.data.mongodb.database=
+spring.data.mongodb.port=
+spring.data.mongodb.host=
+spring.data.mongodb.user=
+spring.data.mongodb.password=
