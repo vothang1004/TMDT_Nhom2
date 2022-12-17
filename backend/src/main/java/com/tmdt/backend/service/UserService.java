@@ -11,11 +11,19 @@ import java.util.Optional;
 @Service
 public class UserService {
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
-    public List<User> getAllUsers() {
-        // TODO Auto-generated method stub
-        return repository.findAll();
+    public List<User> getAllUser() {
+        return userRepository.findAll();
+    }
+
+
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    public Optional<User> findById(String id) {
+        return  userRepository.findById(id);
     }
 
     //user
@@ -43,12 +51,5 @@ public class UserService {
 
     }
 
-    //update userInfo
-    public User save(User user){
-        return repository.save(user);
-    }
 
-    public Optional<User> findById(String id) {
-        return  repository.findById(id);
-    }
 }
