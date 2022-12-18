@@ -2,9 +2,7 @@
 .app-button {
   border: none;
   outline: none;
-  color: #fff;
   text-transform: uppercase;
-  background-color: $main-color;
   height: 36px;
   padding: 0 16px;
   display: inline-flex;
@@ -31,4 +29,13 @@
 }
 .app-link:hover {
   color: $main-color;
+}
+.app-button.contained {
+  background-color: $main-color;
+  color: #fff;
+}
+.app-button.outlined {
+  background-color: #fff;
+  color: $main-color;
+  border: 1px solid $main-color;
 }

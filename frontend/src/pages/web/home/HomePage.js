@@ -27,9 +27,11 @@ import jwt_decode from 'jwt-decode';
 import FacebookLogin from 'react-facebook-login';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GoogleImage from '~/assets/img/google.png';
+import HomePageLogined from './HomePageLogined';
 
 function HomePage() {
   const [showPassword, setShowPassword] = useState(false);
+  const token = '';
 
   const responseGoogle = (response) => {
     console.log(jwt_decode(response.tokenId));
@@ -38,6 +40,10 @@ function HomePage() {
   const responseFacebook = (response) => {
     console.log(response);
   };
+
+  if (token) {
+    return <HomePageLogined />;
+  }
 
   return (
     <>
@@ -50,17 +56,6 @@ function HomePage() {
           <Grid container>
             <Grid item md={6}>
               <Stack spacing={2} padding={'40px 0'}>
-                <Typography
-                  sx={{
-                    textAlign: 'center',
-                    color: '#fff',
-                    fontSize: '19.6px',
-                    letterSpacing: '2px',
-                  }}
-                  variant="h5"
-                >
-                  LƯU TRỮ MỌI LÚC, CHIA SẺ MỌI NƠI
-                </Typography>
                 <Typography
                   sx={{ textAlign: 'center', color: '#fff', fontSize: '16.8px', fontStyle: 'italic', px: 3 }}
                   variant="subtitle1"
@@ -135,7 +130,7 @@ function HomePage() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'flex-end',
-                  paddingRight: '30px',
+                  padding: '30px 30px 30px 0',
                   height: '100%',
                 }}
               >
@@ -172,8 +167,8 @@ function HomePage() {
                             display: 'flex',
                             justifyContent: 'center',
                             '&:hover': {
-                              opacity: '0.9'
-                            }
+                              opacity: '0.9',
+                            },
                           }}
                           onClick={renderProps.onClick}
                           disabled={renderProps.disabled}
@@ -191,7 +186,7 @@ function HomePage() {
                           >
                             <img style={{ width: '20px', height: '20px' }} src={GoogleImage} alt="" />
                           </Box>
-                          <span style={{flexGrow: 1, fontSize: 12, fontWeight: 500}}>ĐĂNG NHẬP VỚI GOOGLE</span>
+                          <span style={{ flexGrow: 1, fontSize: 12, fontWeight: 500 }}>ĐĂNG NHẬP VỚI GOOGLE</span>
                         </Button>
                       )}
                       onSuccess={responseGoogle}
@@ -201,7 +196,7 @@ function HomePage() {
                     <FacebookLogin
                       appId="519822053435491"
                       autoLoad={true}
-                      textButton='FACEBOOK'
+                      textButton="FACEBOOK"
                       fields="name,email,picture"
                       callback={responseFacebook}
                       cssClass="login-facebook-btn"

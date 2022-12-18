@@ -15,7 +15,7 @@ $main-color: #cd1417;
   font-weight: 500;
   color: #fff;
   text-transform: uppercase;
-  background-color: #3B5998;
+  background-color: #3b5998;
   border: none;
   outline: none;
   display: inline-flex;
@@ -28,4 +28,14 @@ $main-color: #cd1417;
   &:hover {
     filter: brightness(110%);
   }
+}
+.custome-scrolly::-webkit-scrollbar {
+  width: 10px;
+}
+.custome-scrolly::-webkit-scrollbar-thumb {
+  background-color: rgba(204, 204, 204, .5);
+  border-radius: 10px;
+}
+.custome-scrolly::-webkit-scrollbar-track {
+  background-color: #fff;
 }
