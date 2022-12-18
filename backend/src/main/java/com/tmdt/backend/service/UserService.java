@@ -14,23 +14,32 @@ import java.util.Optional;
 @Service
 public class UserService implements UserDetailsService {
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByUsername(username)
+        return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
     }
 
     public User findById(String id) {
-        return repository.findById(id)
+        return userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("user id not found"));
     }
 
     public List<User> getAllUsers() {
-        // TODO Auto-generated method stub
-        return repository.findAll();
+        return userRepository.findAll();
     }
+    public List<User> getAllUser() {
+        return userRepository.findAll();
+    }
+
+
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+
 
     //user
     public void login(String userName,String password) {
@@ -55,11 +64,4 @@ public class UserService implements UserDetailsService {
     public void changePassword() {
 
     }
-
-    //update userInfo
-    public User save(User user){
-        return repository.save(user);
-    }
-
-
 }
