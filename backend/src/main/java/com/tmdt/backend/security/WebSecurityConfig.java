@@ -49,14 +49,28 @@ public class WebSecurityConfig {
         return authProvider;
     }
 
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.cors().and().csrf().disable()
+//                .exceptionHandling().authenticationEntryPoint(accessTokenEntryPoint).and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+//                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+//                .anyRequest().authenticated();
+//        http.addFilterBefore(accessTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(accessTokenEntryPoint).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeHttpRequests().requestMatchers("/api/auth/**", "/user/list-user").permitAll()
+                .authorizeHttpRequests().requestMatchers("/api/auth/**","/user/list-user").permitAll()
                 .anyRequest().authenticated();
+
+        http.authenticationProvider(authenticationProvider());
+
         http.addFilterBefore(accessTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 }

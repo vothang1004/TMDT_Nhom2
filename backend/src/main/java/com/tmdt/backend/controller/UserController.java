@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -17,8 +16,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
-
 
     //admin
     //lay tat ca user
