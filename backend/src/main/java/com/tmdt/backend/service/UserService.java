@@ -3,15 +3,29 @@ package com.tmdt.backend.service;
 import com.tmdt.backend.model.User;
 import com.tmdt.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository repository;
+
+    @Override
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+        return repository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+    }
+
+    public User findById(String id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("user id not found"));
+    }
 
     public List<User> getAllUsers() {
         // TODO Auto-generated method stub
@@ -19,8 +33,7 @@ public class UserService {
     }
 
     //user
-    //login by email only.
-    public void login(String email,String password) {
+    public void login(String userName,String password) {
 
     }
     public void register() {
@@ -48,7 +61,5 @@ public class UserService {
         return repository.save(user);
     }
 
-    public Optional<User> findById(String id) {
-        return  repository.findById(id);
-    }
+
 }
