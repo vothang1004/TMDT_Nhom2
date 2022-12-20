@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
@@ -19,7 +19,7 @@ public class UserController {
 
     //admin
     //lay tat ca user
-    @GetMapping("/list-user")
+    @GetMapping("/user/list-user")
     public ResponseEntity<List<User>> getAllUser() {
         try {
             List<User> list = userService.getAllUser();
