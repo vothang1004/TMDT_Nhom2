@@ -30,13 +30,15 @@ public class User implements UserDetails {
     @NonNull
     private String email;
     @NonNull
-    @JsonIgnore
+//    @JsonIgnore
     private String password;
     private int score;
     @DocumentReference(lazy=true)
     private Role role;
     private Date dob;
     private String gender;
+    private Boolean locked = false;
+    private Boolean enabled = false;
 
     @Override
     public Collection<SimpleGrantedAuthority> getAuthorities() {
@@ -48,8 +50,12 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String email, String password, String gender){
-
+    public User(String username, String email, String password, Role role, String gender){
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.gender = gender;
     }
 
     public User(String username, String email, String password, int score, Role role, Date dob, String gender) {
@@ -82,22 +88,22 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return !locked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return enabled;
     }
 
     @Override

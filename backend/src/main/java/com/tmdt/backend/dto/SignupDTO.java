@@ -3,11 +3,13 @@ package com.tmdt.backend.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class SignupDTO {
     @NotBlank
     @Size(min = 3, max = 30)
@@ -21,5 +23,9 @@ public class SignupDTO {
     private String password;
     @NotBlank
     @Size(max = 60)
+    private String role;
+    @NotBlank
+    @Size(max = 60)
     private String gender;
 }
+
