@@ -18,7 +18,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
-@Document(collection = "user")
+@Document(collection = "User")
 @Data
 public class User implements UserDetails {
     @Id

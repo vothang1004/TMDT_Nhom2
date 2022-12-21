@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Document(collection = "role")
+@Document(collection = "Role")
 public class Role {
     @Id
     private String id;
