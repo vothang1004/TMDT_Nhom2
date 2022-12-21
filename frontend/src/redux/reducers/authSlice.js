@@ -13,8 +13,12 @@ const authSlice = createSlice({
     loginStart() {},
     loginFail() {},
     loginSuccess() {},
+    // logout
+    logoutStart() {},
+    logoutSuccess() {},
+    logoutFail() {},
   },
 });
 
 export default authSlice.reducer;
-export const { loginStart, loginFail, loginSuccess } = authSlice.actions;
+export const { loginStart, loginFail, loginSuccess, logoutStart, logoutSuccess, logoutFail } = authSlice.actions;
