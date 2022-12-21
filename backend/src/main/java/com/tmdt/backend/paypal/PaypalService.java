@@ -1,3 +1,4 @@
+//
 //package com.tmdt.backend.paypal;
 //
 //import com.paypal.api.payments.*;
@@ -22,7 +23,7 @@
 //			Double total,
 //			String currency,
 //			String method,
-//			String intent,
+//		String intent,
 //			String description,
 //			String cancelUrl,
 //			String successUrl) throws PayPalRESTException{
@@ -35,7 +36,7 @@
 //		transaction.setDescription(description);
 //		transaction.setAmount(amount);
 //
-//		List<Transaction> transactions = new ArrayList<>();
+//	List<Transaction> transactions = new ArrayList<>();
 //		transactions.add(transaction);
 //
 //		Payer payer = new Payer();
@@ -62,3 +63,4 @@
 //	}
 //
 //}
+//

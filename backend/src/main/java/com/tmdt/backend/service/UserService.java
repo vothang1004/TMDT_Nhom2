@@ -60,7 +60,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User findUsernameByQuery(String username) {
-        return mongoOperations.findOne(query(where("username").is(username)), User.class,"user");
+        return mongoOperations.findOne(query(where("username").is(username)), User.class,"User");
     }
 
     public User findById(String id) {
@@ -124,10 +124,10 @@ public class UserService implements UserDetailsService {
 
     public int enableUser(String email) {
         //find
-        User user = mongoOperations.findOne(query(where("email").is(email)), User.class,"user");
+        User user = mongoOperations.findOne(query(where("email").is(email)), User.class,"User");
         System.out.println(user);
         user.setEnabled(true);
-        User userUpdated = mongoOperations.save(user, "user");
+        User userUpdated = mongoOperations.save(user, "User");
 
         if(userUpdated != null) {
             return 1;
