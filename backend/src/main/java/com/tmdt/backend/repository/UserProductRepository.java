@@ -1,6 +1,5 @@
 package com.tmdt.backend.repository;
-
-import ccom.tmdt.backend.model.UserProduct;
+import com.tmdt.backend.model.UserProduct;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "6371bfe40ac8ae8ad1af59d4"
+  },
+  "storage": 2000000,
+  "transfer": 2000,
+  "period": 720,
+  "product_name": "gói storage",
+  "price": 200000,
+  "score": 20
+},{
+  "_id": {
+    "$oid": "6371c0b30ac8ae8ad1af59d5"
+  },
+  "product_name": "gói vip",
+  "storage": 1500000,
+  "transfer": 200000,
+  "period": 720,
+  "price": 250000,
+  "score": 30
+}]

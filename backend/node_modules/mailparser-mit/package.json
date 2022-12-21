@@ -1,0 +1,46 @@
+{
+  "name": "mailparser-mit",
+  "description": "MIT-licensed asynchronous and non-blocking parser for mime encoded e-mail messages",
+  "version": "1.0.0",
+  "author": "Andris Reinman",
+  "maintainers": [
+    {
+      "name": "Ross Johnson",
+      "email": "ross@mazira.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/mazira/mailparser-mit.git"
+  },
+  "scripts": {
+    "test": "mocha --recursive --reporter list"
+  },
+  "main": "./lib/mailparser",
+  "license": "MIT",
+  "dependencies": {
+    "addressparser": "^1.0.1",
+    "iconv-lite": "~0.4.24",
+    "mime": "^1.6.0",
+    "uue": "^3.1.0"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "iconv": "2.3.2",
+    "mocha": "5.2.0"
+  },
+  "keywords": [
+    "mailparser",
+    "emailparser",
+    "mail-parser",
+    "email-parser",
+    "e-mail-parser",
+    "mime-parser",
+    "mime-message",
+    "mime-message-parser",
+    "email",
+    "e-mail",
+    "mime",
+    "parser"
+  ]
+}

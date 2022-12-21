@@ -1,4 +1,4 @@
-package com.tmdt.backend.model;
+package com.tmdt.backend.controller;
 
 import com.tmdt.backend.model.Product;
 import com.tmdt.backend.model.User;
@@ -9,20 +9,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-
-
     //admin
     //lay tat ca user
-    @GetMapping("/list-user")
+    @GetMapping("/user/list-user")
     public ResponseEntity<List<User>> getAllUser() {
         System.out.println("hello");
         try {
@@ -50,10 +47,10 @@ public class UserController {
     @GetMapping(value = "/user/{id}")
     public ResponseEntity<User> getUser(@PathVariable("id") String id) {
         try {
-            Optional<User> user = userService.findById(id);
+            User user = userService.findById(id);
 
-            if(user.isPresent()) {
-                return new ResponseEntity(user.get(), HttpStatus.OK);
+            if(user != null) {
+                return new ResponseEntity(user, HttpStatus.OK);
             }
             else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -84,11 +81,10 @@ public class UserController {
     @PutMapping("/user/{id})")
     public ResponseEntity<User> changePass(@RequestBody User user, @PathVariable("id") String id ){
         try {
-            Optional<User> getUser = userService.findById(id);
-            if(getUser.isPresent()) {
-                User userNew = getUser.get();
-                userNew.setPassword(user.getPassword());
-                return new ResponseEntity<>(userService.save(userNew), HttpStatus.OK);
+            User getUser = userService.findById(id);
+            if(getUser != null) {
+                getUser.setPassword(user.getPassword());
+                return new ResponseEntity<>(userService.save(getUser), HttpStatus.OK);
             }else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
@@ -99,21 +95,36 @@ public class UserController {
 
     //Tich diem khi mua hang
 
+//    @PutMapping("/payment/{id_user}")
+//    public ResponseEntity<User> updateScore(@PathVariable("id_user") String id_user,@RequestBody Product product) {
+//        try {
+//            Optional<User> user = userService.findById(id_user);
+//            if(user.isPresent()) {
+//                User userNew = user.get();
+//                userNew.updateScore(product.getScore());
+//                return new ResponseEntity<User>(userService.save(userNew),HttpStatus.OK);
+//            }else {
+//                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//            }
+//
+//        }catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//
+//        }
+//    }
+
     @PutMapping("/payment/{id_user}")
     public ResponseEntity<User> updateScore(@PathVariable("id_user") String id_user,@RequestBody Product product) {
         try {
-            Optional<User> user = userService.findById(id_user);
-            if(user.isPresent()) {
-                User userNew = user.get();
-                userNew.updateScore(product.getScore());
-                return new ResponseEntity<User>(userService.save(userNew),HttpStatus.OK);
+            User user = userService.findById(id_user);
+            if(user != null) {
+                user.updateScore(product.getScore());
+                return new ResponseEntity<User>(userService.save(user),HttpStatus.OK);
             }else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
-
         }catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
     }
 

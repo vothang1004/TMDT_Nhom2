@@ -16,15 +16,26 @@ public class PaypalController {
 	@Autowired
 	UserProductService userProductService;
 
+
 //	public static final String SUCCESS_URL = "pay/success";
-	public static final String SUCCESS_URL = "order";
+// 	public static final String SUCCESS_URL1 = "order1/{id_user}/{id_product}";
+ 	public static final String SUCCESS_URL = "order";
+
 	public static final String CANCEL_URL = "pay/cancel";
 
 	@GetMapping("/")
 	public String home() {
+		System.out.println("hung");
 		return "home";
 	}
-
+	public boolean checkPrice(String id_user,String id_product,double orderPrice){
+		double standardPrice = userProductService.getScoreBonus(id_user,id_product);
+				if(standardPrice!=orderPrice){
+					return false;
+				}
+				return true;
+	}
+	//@ModelAttribute("order")
 	@PostMapping("/pay")
 	public String payment(@ModelAttribute("order") OrderNew order) {
 		try {
@@ -39,26 +50,30 @@ public class PaypalController {
 					return "redirect:"+link.getHref();
 				}
 			}
-
+			
 		} catch (PayPalRESTException e) {
-
+		
 			e.printStackTrace();
 		}
 		return "redirect:/";
 	}
-	
+
 	 @GetMapping(value = CANCEL_URL)
 	    public String cancelPay() {
 	        return "cancel";
 	    }
-
-//	    @GetMapping(value = SUCCESS_URL)
-//	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
+		//@ModelAttribute("order") OrderNew order,
+//		@GetMapping(value = SUCCESS_URL1)
+//	    public String successPay(@PathVariable("id_user")String idUser,@PathVariable("id_product")String idProduct,@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
 //	        try {
 //	            Payment payment = service.executePayment(paymentId, payerId);
 //	            System.out.println(payment.toJSON());
+//					System.out.println("ID USER: "+idUser);
+//				System.out.println();
+//				System.out.println();
 //	            if (payment.getState().equals("approved")) {
-//	                return "success";
+//	                return "order1/"+idUser+"/"+idProduct;
+////					return "success";
 //	            }
 //	        } catch (PayPalRESTException e) {
 //	         System.out.println(e.getMessage());
