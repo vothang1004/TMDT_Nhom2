@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import {
   Box,
@@ -19,7 +19,7 @@ import {
 import WebLayout from '~/components/layouts/WebLayout';
 import BgHome from '~/assets/img/bg_home.jpg';
 import ButtonApp from '~/components/buttonApp';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { GoogleLogin } from 'react-google-login';
@@ -27,23 +27,23 @@ import jwt_decode from 'jwt-decode';
 import FacebookLogin from 'react-facebook-login';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GoogleImage from '~/assets/img/google.png';
-import HomePageLogined from './HomePageLogined';
 
 function HomePage() {
   const [showPassword, setShowPassword] = useState(false);
-  const token = '';
+  const token = 'ddffgfgfg';
+  const navigate = useNavigate();
 
   const responseGoogle = (response) => {
-    console.log(jwt_decode(response.tokenId));
+    console.log(jwt_decode(response.tokenId));    
     console.log(response);
   };
   const responseFacebook = (response) => {
     console.log(response);
   };
 
-  if (token) {
-    return <HomePageLogined />;
-  }
+  useEffect(() => {
+    if(token) navigate('/file/root');
+  }, [navigate])
 
   return (
     <>

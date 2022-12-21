@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import WebLayout from '~/components/layouts/WebLayout';
 import {
@@ -18,10 +18,32 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 import FolderIcon from '@mui/icons-material/Folder';
 import { FileIcon, defaultStyles } from 'react-file-icon';
+import { useNavigate, useParams } from 'react-router-dom';
+import MenuFile from '~/components/file/MenuFile';
 
 function HomePageLogined() {
+  const { id: idFile } = useParams();
+  const navigate = useNavigate();
+  const [anchorMenuFile, setAnchorMenuFile] = useState(null);
+  const handleDbClickFile = (file) => {
+    navigate(`/file/${file.id}`);
+  };
+  const handleShowMenuFile = (e) => {
+    e.preventDefault();
+    setAnchorMenuFile(e.target);
+  };
+  const handleCloseMenuFile = () => {
+    setAnchorMenuFile(null);
+  };
+  useEffect(() => {
+    // call api
+    console.log('id file => ', idFile);
+  }, [idFile]);
   return (
     <>
+      {!!anchorMenuFile && (
+        <MenuFile open={!!anchorMenuFile} anchorEl={anchorMenuFile} handleClose={handleCloseMenuFile} />
+      )}
       <WebLayout>
         <Box sx={{ backgroundColor: '#f2f3f7' }}>
           <Container className="home" sx={{ maxHeight: 'calc(100vh - 80px)' }} maxWidth="xl">
@@ -75,7 +97,19 @@ function HomePageLogined() {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid className="table-file__row" padding="14px 10px" sx={{}} container>
+              <Grid
+                onContextMenu={handleShowMenuFile}
+                onDoubleClick={() => handleDbClickFile({ id: '123', parent: null, isFile: false })}
+                className="table-file__row"
+                padding="14px 10px"
+                sx={{
+                  cursor: 'pointer',
+                  '&:active': {
+                    backgroundColor: '#ccc',
+                  },
+                }}
+                container
+              >
                 <Grid item md={4}>
                   <Stack spacing={2} direction="row" alignItems="center">
                     <FolderIcon sx={{ color: '#f9c943' }} />
@@ -100,59 +134,18 @@ function HomePageLogined() {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid className="table-file__row" padding="14px 10px" sx={{}} container>
-                <Grid item md={4}>
-                  <Stack spacing={2} direction="row" alignItems="center">
-                    <FolderIcon sx={{ color: '#f9c943' }} />
-                    <Typography variant="body1" sx={{ fontSize: '14px' }}>
-                      Photos
-                    </Typography>
-                  </Stack>
-                </Grid>
-                <Grid item md={2}>
-                  <Typography sx={{ fontSize: '14px' }} variant="body1">
-                    _
-                  </Typography>
-                </Grid>
-                <Grid item md={2}>
-                  <Typography sx={{ fontSize: '14px' }} variant="body1">
-                    _
-                  </Typography>
-                </Grid>
-                <Grid item md={4}>
-                  <Typography sx={{ fontSize: '14px' }} variant="body1">
-                    20
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid className="table-file__row" padding="14px 10px" sx={{}} container>
-                <Grid item md={4}>
-                  <Stack spacing={2} direction="row" alignItems="center">
-                    <Box sx={{ width: '16px', height: '16px' }}>
-                      <FileIcon extension="pdf" {...defaultStyles.pdf} />
-                    </Box>
-                    <Typography variant="body1" sx={{ fontSize: '14px' }}>
-                      luanvan.pdf
-                    </Typography>
-                  </Stack>
-                </Grid>
-                <Grid item md={2}>
-                  <Typography sx={{ fontSize: '14px' }} variant="body1">
-                    403KB
-                  </Typography>
-                </Grid>
-                <Grid item md={2}>
-                  <Typography sx={{ fontSize: '14px' }} variant="body1">
-                    _
-                  </Typography>
-                </Grid>
-                <Grid item md={4}>
-                  <Typography sx={{ fontSize: '14px' }} variant="body1">
-                    3
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid className="table-file__row" padding="14px 10px" sx={{}} container>
+              <Grid
+                onDoubleClick={() => handleDbClickFile({ id: '456', parent: null, isFile: true })}
+                className="table-file__row"
+                padding="14px 10px"
+                sx={{
+                  cursor: 'pointer',
+                  '&:active': {
+                    backgroundColor: '#ccc',
+                  },
+                }}
+                container
+              >
                 <Grid item md={4}>
                   <Stack spacing={2} direction="row" alignItems="center">
                     <Box sx={{ width: '16px', height: '16px' }}>
