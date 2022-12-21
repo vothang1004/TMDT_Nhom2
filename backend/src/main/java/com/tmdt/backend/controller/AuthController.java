@@ -14,6 +14,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,9 +42,10 @@ public class AuthController {
     }
 
     @GetMapping(path = "/registration/confirm")
-    public String confirm(@RequestParam("token") String token) {
+    public ResponseEntity<?> confirm(@RequestParam("token") String token) {
         log.info("Confirm Mapping");
-        return registrationService.confirmToken(token);
+        registrationService.confirmToken(token);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/token/refresh")
