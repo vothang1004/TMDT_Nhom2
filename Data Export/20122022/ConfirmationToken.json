@@ -1,0 +1,104 @@
+[{
+  "_id": {
+    "$oid": "63a0abf0903f6a759eeb2b9e"
+  },
+  "token": "4ab08607-6e4b-497d-b718-96ea4005d7da",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671474160578"
+    }
+  },
+  "expiresAt": {
+    "$date": {
+      "$numberLong": "1671475060578"
+    }
+  },
+  "confirmedAt": {
+    "$date": {
+      "$numberLong": "1671474186320"
+    }
+  },
+  "user": {
+    "$ref": "user",
+    "$id": {
+      "$oid": "63a0abf0903f6a759eeb2b9d"
+    }
+  },
+  "_class": "com.example.loginregister.model.ConfirmationToken"
+},{
+  "_id": {
+    "$oid": "63a12ce2a3ebcb639b6cf666"
+  },
+  "token": "41895457-0f24-45d0-b50d-f76e10ad8a18",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671507170010"
+    }
+  },
+  "expiresAt": {
+    "$date": {
+      "$numberLong": "1671508070010"
+    }
+  },
+  "confirmedAt": {
+    "$date": {
+      "$numberLong": "1671507239746"
+    }
+  },
+  "user": {
+    "$ref": "user",
+    "$id": {
+      "$oid": "63a12ce1a3ebcb639b6cf665"
+    }
+  },
+  "_class": "com.example.loginregister.model.ConfirmationToken"
+},{
+  "_id": {
+    "$oid": "63a149e436b96441581e8f9a"
+  },
+  "token": "0825c7b4-065a-4c67-ab90-e51bd6400100",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671514596161"
+    }
+  },
+  "expiresAt": {
+    "$date": {
+      "$numberLong": "1671515496161"
+    }
+  },
+  "user": {
+    "$ref": "user",
+    "$id": {
+      "$oid": "63a149e436b96441581e8f99"
+    }
+  },
+  "_class": "com.example.loginregister.model.ConfirmationToken"
+},{
+  "_id": {
+    "$oid": "63a18023d62cb55eb13b220d"
+  },
+  "token": "ea953da4-045d-4f1f-a785-47fe960377b8",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671528483344"
+    }
+  },
+  "expiresAt": {
+    "$date": {
+      "$numberLong": "1671529383344"
+    }
+  },
+  "confirmedAt": {
+    "$date": {
+      "$numberLong": "1671528531404"
+    }
+  },
+  "user": {
+    "$ref": "user",
+    "$id": {
+      "$oid": "63a18023d62cb55eb13b220c"
+    }
+  },
+  "_class": "com.tmdt.backend.model.ConfirmationToken"
+}]

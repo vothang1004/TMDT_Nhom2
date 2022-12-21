@@ -9,23 +9,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
     UserService userService;
 
-
-
     //admin
     //lay tat ca user
-    @GetMapping("/list-user")
+    @GetMapping("/user/list-user")
     public ResponseEntity<List<User>> getAllUser() {
+        System.out.println("hello");
         try {
             List<User> list = userService.getAllUser();
+            if(list==null){
+                System.out.println("no connect");
+            }else{
+                System.out.println(userService.toString());
+                System.out.println("connect");
+            }
             System.out.println(list);
 
             if(list.isEmpty()) {
@@ -34,6 +38,7 @@ public class UserController {
             return new ResponseEntity<List<User>>(list,HttpStatus.OK);
 
         }catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

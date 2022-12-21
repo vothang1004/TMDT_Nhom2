@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "maildev": "^1.1.1"
+  }
+}
