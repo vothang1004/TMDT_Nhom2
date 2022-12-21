@@ -1,5 +1,7 @@
 package com.tmdt.backend.service;
 
+import com.tmdt.backend.model.Product;
+import com.tmdt.backend.model.User;
 import com.tmdt.backend.model.UserProduct;
 import com.tmdt.backend.repository.ProductRepository;
 import com.tmdt.backend.repository.UserProductRepository;
