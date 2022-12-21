@@ -9,4 +9,7 @@ import java.util.List;
 public interface UserProductRepository extends MongoRepository<UserProduct,String> {
     @Query("{'id_user' :  ?0}")
     List<UserProduct> getAllProductOfUser(String id_user);
+
+    @Query("{'id_user' :  ?0}")
+    List<UserProduct> findUserById(String username);
 }

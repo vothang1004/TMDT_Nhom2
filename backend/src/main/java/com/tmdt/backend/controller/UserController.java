@@ -24,8 +24,15 @@ public class UserController {
     //lay tat ca user
     @GetMapping("/list-user")
     public ResponseEntity<List<User>> getAllUser() {
+        System.out.println("hello");
         try {
             List<User> list = userService.getAllUser();
+            if(list==null){
+                System.out.println("no connect");
+            }else{
+                System.out.println(userService.toString());
+                System.out.println("connect");
+            }
             System.out.println(list);
 
             if(list.isEmpty()) {
@@ -34,6 +41,7 @@ public class UserController {
             return new ResponseEntity<List<User>>(list,HttpStatus.OK);
 
         }catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

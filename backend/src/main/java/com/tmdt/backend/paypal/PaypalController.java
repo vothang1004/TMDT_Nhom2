@@ -1,5 +1,6 @@
 package com.tmdt.backend.paypal;
 
+import com.tmdt.backend.service.UserProductService;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
@@ -12,8 +13,11 @@ public class PaypalController {
 
 	@Autowired
 	PaypalService service;
+	@Autowired
+	UserProductService userProductService;
 
-	public static final String SUCCESS_URL = "pay/success";
+//	public static final String SUCCESS_URL = "pay/success";
+	public static final String SUCCESS_URL = "order";
 	public static final String CANCEL_URL = "pay/cancel";
 
 	@GetMapping("/")
@@ -22,19 +26,22 @@ public class PaypalController {
 	}
 
 	@PostMapping("/pay")
-	public String payment(@ModelAttribute("order") Order order) {
+	public String payment(@ModelAttribute("order") OrderNew order) {
 		try {
+			if(!checkPrice( order.getIdUser(), order.getIdProduct(), order.getPrice())){
+				return " price not correct";
+			}
 			Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
 					order.getIntent(), order.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-					"http://localhost:8080/" + SUCCESS_URL);
+					"http://localhost:8080/" + SUCCESS_URL+"/"+order.getIdUser()+"/"+order.getIdProduct());
 			for(Links link:payment.getLinks()) {
 				if(link.getRel().equals("approval_url")) {
 					return "redirect:"+link.getHref();
 				}
 			}
-			
+
 		} catch (PayPalRESTException e) {
-		
+
 			e.printStackTrace();
 		}
 		return "redirect:/";
@@ -45,18 +52,18 @@ public class PaypalController {
 	        return "cancel";
 	    }
 
-	    @GetMapping(value = SUCCESS_URL)
-	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
-	        try {
-	            Payment payment = service.executePayment(paymentId, payerId);
-	            System.out.println(payment.toJSON());
-	            if (payment.getState().equals("approved")) {
-	                return "success";
-	            }
-	        } catch (PayPalRESTException e) {
-	         System.out.println(e.getMessage());
-	        }
-	        return "redirect:/";
-	    }
+//	    @GetMapping(value = SUCCESS_URL)
+//	    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
+//	        try {
+//	            Payment payment = service.executePayment(paymentId, payerId);
+//	            System.out.println(payment.toJSON());
+//	            if (payment.getState().equals("approved")) {
+//	                return "success";
+//	            }
+//	        } catch (PayPalRESTException e) {
+//	         System.out.println(e.getMessage());
+//	        }
+//	        return "redirect:/";
+//	    }
 
 }
