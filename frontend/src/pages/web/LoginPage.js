@@ -206,7 +206,7 @@ function LoginPage() {
                       }
                       label="Ghi nhớ đăng nhập"
                     />
-                    <Link to="/foget-password" style={{ fontSize: 12, color: '#57a9fd', textDecoration: 'none' }}>
+                    <Link to="/forget-password" style={{ fontSize: 12, color: '#57a9fd', textDecoration: 'none' }}>
                       Quên mật khẩu?
                     </Link>
                   </Stack>

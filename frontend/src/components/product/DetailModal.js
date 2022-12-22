@@ -3,6 +3,7 @@ import { Box, Modal, Stack, Typography } from '@mui/material';
 import ButtonApp from '../buttonApp';
 import { addToCart } from '~/redux/reducers/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -18,9 +19,19 @@ const style = {
 
 function DetailModal({ open, handleClose, product }) {
   const { list: cart } = useSelector((state) => state.cart);
+  const { currentUser } = useSelector((state) => state.auth.login);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleAddToCart = () => {
+    console.log(product);
     dispatch(addToCart(product));
+  };
+  const handleOrder = () => {
+    if (currentUser?.token) {
+      navigate('/payment', { state: product });
+    } else {
+      navigate('/login');
+    }
   };
   return (
     <>
@@ -33,17 +44,17 @@ function DetailModal({ open, handleClose, product }) {
         <Box sx={style}>
           <Stack spacing={2}>
             <Typography variant="h6" color="primary.main">
-              {product?.product_name}
+              {product?.name}
             </Typography>
-            <Typography variant="h6">Giá: {product?.price}$</Typography>
+            <Typography variant="h6">Giá: {product?.price} VND</Typography>
             <Typography sx={{ fontSize: '14px', fontStyle: 'italic' }} variant="body1">
               {product?.description}
             </Typography>
             <Stack spacing={1} direction="row">
               <ButtonApp handleClick={handleAddToCart} variant="outlined">
-                {cart.length > 0 ? 'Xóa khỏi giỏ hàng' : 'Thêm vào giỏ'}
+                {cart.map((item) => item._id)?.includes(product._id) ? 'Xóa khỏi giỏ hàng' : 'Thêm vào giỏ'}
               </ButtonApp>
-              <ButtonApp>Mua ngay</ButtonApp>
+              <ButtonApp handleClick={handleOrder}>Mua ngay</ButtonApp>
             </Stack>
           </Stack>
         </Box>

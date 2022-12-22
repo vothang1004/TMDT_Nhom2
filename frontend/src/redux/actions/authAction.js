@@ -19,7 +19,11 @@ const login = async (user, dispatch, navigate) => {
     const resp = await axios.post(`${BASE_URL}/v1/auth/login`, user);
     if (resp && resp.status === 200) {
       dispatch(loginSuccess(resp.data));
-      navigate('/file/root');
+      if (resp.data.user.admin) {
+        navigate('/admin');
+      } else {
+        navigate('/file/root');
+      }
     }
   } catch (error) {
     dispatch(loginFail());

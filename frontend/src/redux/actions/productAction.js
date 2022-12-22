@@ -6,7 +6,7 @@ import { getProductFail, getProductStart, getProductSuccess } from '../reducers/
 const getAllProduct = async (dispatch) => {
   try {
     dispatch(getProductStart());
-    const resp = await axios.get(`${BASE_URL}/productapi/products`);
+    const resp = await axios.get(`${BASE_URL}/v1/products`);
     if (resp && resp.status === 200) {
       dispatch(getProductSuccess(resp.data));
     }
