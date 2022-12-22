@@ -1,5 +1,8 @@
 import React from 'react';
-import { Box, Modal, Typography } from '@mui/material';
+import { Box, Modal, Stack, Typography } from '@mui/material';
+import ButtonApp from '../buttonApp';
+import { addToCart } from '~/redux/reducers/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const style = {
   position: 'absolute',
@@ -13,7 +16,12 @@ const style = {
   p: 4,
 };
 
-function DetailModal({ open, handleClose }) {
+function DetailModal({ open, handleClose, product }) {
+  const { list: cart } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
   return (
     <>
       <Modal
@@ -23,10 +31,21 @@ function DetailModal({ open, handleClose }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">Chi tiet</Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <Stack spacing={2}>
+            <Typography variant="h6" color="primary.main">
+              {product?.product_name}
+            </Typography>
+            <Typography variant="h6">Giá: {product?.price}$</Typography>
+            <Typography sx={{ fontSize: '14px', fontStyle: 'italic' }} variant="body1">
+              {product?.description}
+            </Typography>
+            <Stack spacing={1} direction="row">
+              <ButtonApp handleClick={handleAddToCart} variant="outlined">
+                {cart.length > 0 ? 'Xóa khỏi giỏ hàng' : 'Thêm vào giỏ'}
+              </ButtonApp>
+              <ButtonApp>Mua ngay</ButtonApp>
+            </Stack>
+          </Stack>
         </Box>
       </Modal>
     </>

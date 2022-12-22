@@ -1,4 +1,5 @@
 import HomePageAdmin from "~/pages/admin/home/HomePageAdmin";
+import CartPage from "~/pages/web/cart/CartPage";
 import HomePage from "~/pages/web/home/HomePage";
 import HomePageLogined from "~/pages/web/home/HomePageLogined";
 import LoginPage from "~/pages/web/LoginPage";
@@ -39,6 +40,11 @@ export const webRoutes = [
     },
     {
         id: 7,
+        path: '/cart',
+        page: <CartPage />
+    },
+    {
+        id: 8,
         path: '/*',
         page: <div>Not found</div>
     },

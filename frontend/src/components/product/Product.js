@@ -6,7 +6,7 @@ import ButtonApp from '../buttonApp';
 import DetailModal from '~/components/product/DetailModal';
 import PaymentModal from './PaymentModal';
 
-function Product() {
+function Product({product}) {
   const [openDetailModal, setOpenDetailModal] = useState(false);
   const [openPaymentModal, setOpenPaymentModal] = useState(false);
 
@@ -25,7 +25,7 @@ function Product() {
 
   return (
     <>
-      {openDetailModal && <DetailModal open={openDetailModal} handleClose={handleCloseDetailModal} />}
+      {openDetailModal && <DetailModal product={product} open={openDetailModal} handleClose={handleCloseDetailModal} />}
       {openPaymentModal && <PaymentModal open={openPaymentModal} handleClose={handleClosePaymentModal} />}
       <Stack
         sx={{
@@ -54,7 +54,7 @@ function Product() {
           className="product-name"
           variant="h2"
         >
-          Gói Vip
+          {product?.product_name}
         </Typography>
         <img
           style={{
@@ -66,7 +66,7 @@ function Product() {
         />
         <Stack alignItems="center" spacing={1} marginTop="15px">
           <Typography sx={{ fontSize: '14px', textTransform: 'uppercase', color: 'primary.main' }} variant="h5">
-            Chỉ từ <b>20.000Đ/Ngày</b>
+            {product?.price}
           </Typography>
           <Typography sx={{ fontSize: '12px', textAlign: 'center' }} variant="body1">
             Dành cho quý khách có nhu cầu <b>TẢI FILE</b> với tốc độ cao

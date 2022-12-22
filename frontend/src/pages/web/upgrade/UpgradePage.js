@@ -1,9 +1,16 @@
 import { Container, Grid, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import WebLayout from '~/components/layouts/WebLayout';
 import Product from '~/components/product/Product';
+import { getAllProduct } from '~/redux/actions/productAction';
 
 function UpgradePage() {
+  const { list: products } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getAllProduct(dispatch);
+  }, [dispatch]);
   return (
     <>
       <WebLayout>
@@ -12,18 +19,13 @@ function UpgradePage() {
             GÓI DỊCH VỤ
           </Typography>
           <Grid spacing={2} container px="120px">
-            <Grid item md={3}>
-              <Product />
-            </Grid>
-            <Grid item md={3}>
-              <Product />
-            </Grid>
-            <Grid item md={3}>
-              <Product />
-            </Grid>
-            <Grid item md={3}>
-              <Product />
-            </Grid>
+            {products &&
+              products.length &&
+              products.map((product) => (
+                <Grid key={product.id} item md={3}>
+                  <Product product={product} />
+                </Grid>
+              ))}
           </Grid>
         </Container>
       </WebLayout>

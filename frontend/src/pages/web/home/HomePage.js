@@ -27,10 +27,11 @@ import jwt_decode from 'jwt-decode';
 import FacebookLogin from 'react-facebook-login';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GoogleImage from '~/assets/img/google.png';
+import { useSelector } from 'react-redux';
 
 function HomePage() {
   const [showPassword, setShowPassword] = useState(false);
-  const token = 'ddffgfgfg';
+  const {currentUser} = useSelector(state => state.auth.login)
   const navigate = useNavigate();
 
   const responseGoogle = (response) => {
@@ -42,8 +43,8 @@ function HomePage() {
   };
 
   useEffect(() => {
-    if(token) navigate('/file/root');
-  }, [navigate])
+    if(currentUser?.token) navigate('/file/root');
+  }, [currentUser?.token, navigate])
 
   return (
     <>

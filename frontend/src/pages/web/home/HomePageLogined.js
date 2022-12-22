@@ -20,10 +20,12 @@ import FolderIcon from '@mui/icons-material/Folder';
 import { FileIcon, defaultStyles } from 'react-file-icon';
 import { useNavigate, useParams } from 'react-router-dom';
 import MenuFile from '~/components/file/MenuFile';
+import { useSelector } from 'react-redux';
 
 function HomePageLogined() {
   const { id: idFile } = useParams();
   const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.auth.login);
   const [anchorMenuFile, setAnchorMenuFile] = useState(null);
   const handleDbClickFile = (file) => {
     navigate(`/file/${file.id}`);
@@ -38,7 +40,10 @@ function HomePageLogined() {
   useEffect(() => {
     // call api
     console.log('id file => ', idFile);
-  }, [idFile]);
+    if (!currentUser?.token) {
+      navigate('/');
+    }
+  }, [currentUser?.token, idFile, navigate]);
   return (
     <>
       {!!anchorMenuFile && (
