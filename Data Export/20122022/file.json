@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "6371c1240ac8ae8ad1af59d8"
+  },
+  "file_name": "game.zip",
+  "size": 5025699,
+  "owner": "6371bf590ac8ae8ad1af59d1"
+},{
+  "_id": {
+    "$oid": "6371c1a10ac8ae8ad1af59d9"
+  },
+  "file_name": "dat.data",
+  "size": 525699,
+  "owner": "6371bf590ac8ae8ad1af59d1"
+},{
+  "_id": {
+    "$oid": "6371c1f10ac8ae8ad1af59da"
+  },
+  "file_name": "tailieu",
+  "size": 9908526,
+  "owner": "6371bd880ac8ae8ad1af59ce"
+},{
+  "_id": {
+    "$oid": "6371c4060ac8ae8ad1af59ee"
+  },
+  "file_name": "thamkhao.docx",
+  "size": 20515,
+  "owner": "6371bd880ac8ae8ad1af59ce"
+},{
+  "_id": {
+    "$oid": "638040d1853fe47cbe059505"
+  },
+  "file_name": "create.txt",
+  "size": 10,
+  "owner": "6371bd880ac8ae8ad1af59ce"
+}]

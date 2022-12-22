@@ -3,6 +3,7 @@ package com.tmdt.backend.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Calendar;
 import java.util.Date;
 
 @Document(collection = "UserProduct")
@@ -16,6 +17,22 @@ public class UserProduct {
     private Date extend_date;
     private String status;
 
+    public UserProduct(String id_user, String id_product,int hour) {
+        this.id_user = id_user;
+        this.id_product = id_product;
+        this.activated_date = new Date();
+        this.extend_date = addHoursToJavaUtilDate(activated_date,hour);
+        this.status = "actived";
+    }
+
+
+
+    public Date addHoursToJavaUtilDate(Date date, int hours) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
+    }
     public String getId() {
         return id;
     }

@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "6371c2630ac8ae8ad1af59e9"
+  },
+  "id_user": "6371bf590ac8ae8ad1af59d1",
+  "id_file": "6371c1240ac8ae8ad1af59d8"
+},{
+  "_id": {
+    "$oid": "6371c2d60ac8ae8ad1af59ea"
+  },
+  "id_user": "6371bf590ac8ae8ad1af59d1",
+  "id_file": "6371c1a10ac8ae8ad1af59d91002"
+},{
+  "_id": {
+    "$oid": "6371c2e80ac8ae8ad1af59eb"
+  },
+  "id_user": "6371bd880ac8ae8ad1af59ce",
+  "id_file": "6371c1a10ac8ae8ad1af59d91002"
+},{
+  "_id": {
+    "$oid": "6371c36f0ac8ae8ad1af59ec"
+  },
+  "id_user": "0",
+  "id_file": "6371c1f10ac8ae8ad1af59da"
+},{
+  "_id": {
+    "$oid": "6371c4730ac8ae8ad1af59ef"
+  },
+  "id_user": "0",
+  "id_file": "6371c4060ac8ae8ad1af59ee"
+},{
+  "_id": {
+    "$oid": "6372f481b1737a0d98854d7e"
+  },
+  "id_file": "6371c1f10ac8ae8ad1af59da",
+  "id_user": "6371bf590ac8ae8ad1af59d1"
+},{
+  "_id": {
+    "$oid": "637a8051770fb544798b0f4b"
+  },
+  "id_user": "5",
+  "id_file": "6371c1f10ac8ae8ad1af59da"
+}]
