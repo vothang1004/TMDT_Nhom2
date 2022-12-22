@@ -5,10 +5,14 @@ import Vip1 from '~/assets/img/vip1.png';
 import ButtonApp from '../buttonApp';
 import DetailModal from '~/components/product/DetailModal';
 import PaymentModal from './PaymentModal';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-function Product({product}) {
+function Product({ product }) {
   const [openDetailModal, setOpenDetailModal] = useState(false);
   const [openPaymentModal, setOpenPaymentModal] = useState(false);
+  const { currentUser } = useSelector((state) => state.auth.login);
+  const navigate = useNavigate();
 
   const handleOpenDetailModal = () => {
     setOpenDetailModal(true);
@@ -16,11 +20,15 @@ function Product({product}) {
   const handleCloseDetailModal = () => {
     setOpenDetailModal(false);
   };
-  const handleOpenPaymentModal = () => {
-    setOpenPaymentModal(true);
-  };
   const handleClosePaymentModal = () => {
     setOpenPaymentModal(false);
+  };
+  const handleOrder = () => {
+    if (currentUser?.token) {
+      navigate('/payment', { state: product });
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -54,7 +62,7 @@ function Product({product}) {
           className="product-name"
           variant="h2"
         >
-          {product?.product_name}
+          {product?.name}
         </Typography>
         <img
           style={{
@@ -66,12 +74,12 @@ function Product({product}) {
         />
         <Stack alignItems="center" spacing={1} marginTop="15px">
           <Typography sx={{ fontSize: '14px', textTransform: 'uppercase', color: 'primary.main' }} variant="h5">
-            {product?.price}
+            {product?.price} VND
           </Typography>
           <Typography sx={{ fontSize: '12px', textAlign: 'center' }} variant="body1">
             Dành cho quý khách có nhu cầu <b>TẢI FILE</b> với tốc độ cao
           </Typography>
-          <ButtonApp handleClick={handleOpenPaymentModal} style={{ borderRadius: 6, width: '100%' }} variant="outlined">
+          <ButtonApp handleClick={handleOrder} style={{ borderRadius: 6, width: '100%' }} variant="outlined">
             Mua ngay
           </ButtonApp>
         </Stack>

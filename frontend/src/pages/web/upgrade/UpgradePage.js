@@ -22,7 +22,7 @@ function UpgradePage() {
             {products &&
               products.length &&
               products.map((product) => (
-                <Grid key={product.id} item md={3}>
+                <Grid key={product._id} item md={3}>
                   <Product product={product} />
                 </Grid>
               ))}

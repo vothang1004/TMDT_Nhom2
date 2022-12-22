@@ -68,6 +68,9 @@ function Header() {
                       <MenuItem sx={{ fontSize: '14px' }} onClick={() => setOpenModalUser(true)}>
                         Tài khoản
                       </MenuItem>
+                      <MenuItem sx={{ fontSize: '14px' }} onClick={() => navigate('/order')}>
+                        Lịch sử mua hàng
+                      </MenuItem>
                       <MenuItem sx={{ fontSize: '14px' }} onClick={() => navigate('/upgrade')}>
                         Nâng cấp
                       </MenuItem>

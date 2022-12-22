@@ -53,6 +53,10 @@ const authSlice = createSlice({
       state.register.isFetching = false;
       state.register.error = true;
     },
+    // update user
+    updateUser(state, action) {
+      state.login.currentUser = { ...state.login.currentUser, user: action.payload };
+    },
   },
 });
 
@@ -67,4 +71,5 @@ export const {
   registerStart,
   registerFail,
   registerSuccess,
+  updateUser
 } = authSlice.actions;

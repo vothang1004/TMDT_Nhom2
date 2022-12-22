@@ -17,13 +17,15 @@ function CartPage() {
               <img src={CartEmpty} alt="" />
             </Box>
           ) : (
-            <Grid spacing={2} sx={{ paddingTop: '50px' }} container>
-              {cart.map((item) => (
-                <Grid item md={3}>
-                  <Product product={item} />
-                </Grid>
-              ))}
-            </Grid>
+            <>
+              <Grid spacing={2} sx={{ paddingTop: '50px' }} container>
+                {cart.map((item) => (
+                  <Grid key={item._id} item md={3}>
+                    <Product product={item} />
+                  </Grid>
+                ))}
+              </Grid>
+            </>
           )}
         </Container>
       </WebLayout>
