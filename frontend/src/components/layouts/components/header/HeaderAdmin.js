@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './header.scss';
-import { Avatar, Box, Container, Divider, Grid, MenuItem, Stack } from '@mui/material';
+import { Avatar, Box, Container, Divider, Grid, InputBase, MenuItem, Stack } from '@mui/material';
 import stringAvatar from '~/utils/stringAvatar';
 import MenuAnchor from '~/components/menu/MenuAnchor';
+import SearchIcon from '@mui/icons-material/Search';
 
 function HeaderAdmin() {
   const [anchorUser, setAnchorUser] = useState();
@@ -37,7 +38,15 @@ function HeaderAdmin() {
             </Box>
           </Grid>
           <Grid height="100%" item md={10}>
-            <Stack height="100%" alignItems="center" justifyContent="flex-end" spacing={3} direction="row">
+            <Stack height="100%" alignItems="center" justifyContent="space-between" spacing={3} direction="row">
+              <div></div>
+              <InputBase
+                sx={{ width: '400px', justifySelf: 'center', border: '1px solid #ccc', borderRadius: 1, padding: 1 }}
+                placeholder="Tìm kiếm sản phẩm"
+                endAdornment={
+                  <SearchIcon sx={{cursor: 'pointer', color: '#ccc'}} />
+                }
+              />
               <Stack alignItems="center">
                 <Avatar
                   onClick={(e) => setAnchorUser(e.currentTarget)}

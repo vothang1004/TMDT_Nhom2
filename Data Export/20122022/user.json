@@ -1,0 +1,161 @@
+[{
+  "_id": {
+    "$oid": "637f925c92c54d6cc0ff5075"
+  },
+  "username": "thuan",
+  "email": "19130222@st.hcmuaf.edu.vn",
+  "password": "$2a$12$IfS4swISsRdw92hz6MibweEya6QutmeZT.fWbaQwKHABKWEOSjQ/O",
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "score": 0,
+  "gender": "male"
+},{
+  "_id": {
+    "$oid": "6389fa4505487e0836544570"
+  },
+  "username": "thuan2",
+  "email": "2@st.hcmuaf.edu.vn",
+  "password": "1111",
+  "score": 1,
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "gender": "male",
+  "_class": "com.example.tmdtnhom1.model.User"
+},{
+  "_id": {
+    "$oid": "6371bd880ac8ae8ad1af59ce"
+  },
+  "username": "thuận",
+  "email": "thuanpham@gmail.com",
+  "password": "thuan123",
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "score": 390,
+  "gender": "male"
+},{
+  "_id": {
+    "$oid": "6371bf590ac8ae8ad1af59d1"
+  },
+  "username": "phú",
+  "email": "phu123@gmail.com",
+  "password": "phu321",
+  "role": {
+    "$oid": "637f93e292c54d6cc0ff507e"
+  },
+  "score": 450,
+  "gender": "male"
+},{
+  "_id": {
+    "$oid": "6372108b0ac8ae8ad1af59f0"
+  },
+  "username": "cu",
+  "email": "phuan@gmail.com",
+  "password": "anan",
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "score": 300,
+  "_class": "com.tmdt.cuoikitmdt1.model.User",
+  "gender": "male"
+},{
+  "_id": {
+    "$oid": "638328101a6e8152fc286da4"
+  },
+  "username": "thuanas",
+  "email": "19130222aa@st.hcmuaf.edu.vn",
+  "password": "1234",
+  "score": 1,
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "_class": "com.example.tmdtnhom1.model.User",
+  "gender": "male"
+},{
+  "_id": {
+    "$oid": "638329748ac41c2838e5a0e4"
+  },
+  "username": "thuanas",
+  "email": "19130222aa@st.hcmuaf.edu.vn",
+  "password": "1234",
+  "score": 61,
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "gender": "male",
+  "_class": "com.example.tmdtnhom1.model.User"
+},{
+  "_id": {
+    "$oid": "6389f9a5a9d2f938968bb7c8"
+  },
+  "username": "thuận",
+  "email": "thuanpham@gmail.com",
+  "password": "thuan123",
+  "score": 390,
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "_class": "com.example.tmdtnhom1.model.User"
+},{
+  "_id": {
+    "$oid": "63a0a95ea7d404526e0220a0"
+  },
+  "username": "HuuDao1",
+  "email": "19130029@st.hcmuaf.edu.vn",
+  "password": "$2a$10$7fE4IjhNejqZ89cCgynA.e5sv9jSERGnhgQvLkt2eIkNhlRws2fBW",
+  "score": 0,
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "gender": "male",
+  "locked": false,
+  "enabled": false,
+  "_class": "com.example.loginregister.model.User"
+},{
+  "_id": {
+    "$oid": "63a12ce1a3ebcb639b6cf665"
+  },
+  "username": "HuuDao2",
+  "email": "huudao805@gmail.com",
+  "password": "$2a$10$CaVRezdkiKSdJ1/Xa7sow.lpKRhN39hY3nLUO3/bfAom6XyjyiEmy",
+  "score": 0,
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "gender": "male",
+  "locked": false,
+  "enabled": true,
+  "_class": "com.example.loginregister.model.User"
+},{
+  "_id": {
+    "$oid": "63a149e436b96441581e8f99"
+  },
+  "username": "HuuDao3",
+  "email": "huudao85@gmail.com",
+  "password": "$2a$10$zlJg99Lyu7WwrEcR5motYOJUTlQVHS6z1uzm.NKZ4wjQWFwHgmppq",
+  "score": 0,
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "gender": "male",
+  "locked": false,
+  "enabled": false,
+  "_class": "com.example.loginregister.model.User"
+},{
+  "_id": {
+    "$oid": "63a18023d62cb55eb13b220c"
+  },
+  "username": "HuuDao4",
+  "email": "huudao86@gmail.com",
+  "password": "$2a$10$9AHUZzWRayFUGWWKisSaYO7jXSDJ4FAJcER3gaEggc/My3vYBC.my",
+  "score": 0,
+  "role": {
+    "$oid": "637f93a592c54d6cc0ff507b"
+  },
+  "gender": "male",
+  "locked": false,
+  "enabled": true,
+  "_class": "com.tmdt.backend.model.User"
+}]

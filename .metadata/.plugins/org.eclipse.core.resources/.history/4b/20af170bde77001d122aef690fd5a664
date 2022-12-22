@@ -1,5 +1,0 @@
-package tmdt.repository;
-
-public interface BillRepository {
-
-}
