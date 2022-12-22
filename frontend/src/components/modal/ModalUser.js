@@ -1,11 +1,13 @@
-import { Box, FormHelperText, Grid, Modal, Stack, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { FormHelperText, Modal, Stack, TextField, Typography } from '@mui/material';
+import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import ButtonApp from '../buttonApp';
+import axios from 'axios';
+import { BASE_URL } from '~/utils/constants';
+import { updateUser } from '~/redux/reducers/authSlice';
 
 const style = {
   position: 'absolute',
@@ -37,11 +39,27 @@ function ModalUser({ open, handleClose }) {
     },
     resolver: yupResolver(schema),
   });
-  const [showPassword, setShowPassword] = useState(false);
-
+  const btnSubmitRef = useRef();
+  const dispatch = useDispatch();
   // on submit
   const onSubmit = (value) => {
     console.log(value);
+    const handleUpdateUser = async () => {
+      try {
+        const resp = await axios.put(`${BASE_URL}/v1/user/${currentUser?.user?._id}`, value, {
+          headers: {
+            token: currentUser?.token,
+          },
+        });
+        if (resp && resp.status === 200) {
+          dispatch(updateUser(resp.data));
+          handleClose();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleUpdateUser();
   };
 
   return (
@@ -58,8 +76,10 @@ function ModalUser({ open, handleClose }) {
           </Typography>
           <TextField {...register('username')} fullWidth label="Username" />
           {errors?.username && <FormHelperText error>{errors?.username?.message}</FormHelperText>}
-          <TextField {...register('email')} fullWidth label="Email" />
+          <TextField disabled {...register('email')} fullWidth label="Email" />
           {errors?.email && <FormHelperText error>{errors?.email?.message}</FormHelperText>}
+          <ButtonApp handleClick={() => btnSubmitRef.current.click()}>Lưu thay đổi</ButtonApp>
+          <input type="submit" hidden ref={btnSubmitRef} />
           {/* <TextField
             {...register('password')}
             type={showPassword ? 'text' : 'password'}
